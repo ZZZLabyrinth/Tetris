@@ -54,6 +54,9 @@ function addEventListener() {
 }
 
 function handleKeyPress(event) {
+  if (account.score > 3000) {
+    gameFinish();
+  }
   if (event.keyCode === KEY.P) {
     pause();
   }
@@ -75,9 +78,7 @@ function handleKeyPress(event) {
         account.score += POINTS.HARD_DROP;
         board.piece.move(p);
         p = moves[KEY.DOWN](board.piece);
-        if (account.score > 3000) {
-          gameFinish();
-        }
+
       }
       board.piece.hardDrop();
     } else if (board.valid(p)) {
